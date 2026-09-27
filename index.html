@@ -75,6 +75,7 @@ ul,ol{list-style:none}
 ::selection{background:rgba(192,138,78,.38);color:#fff}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
 section{scroll-margin-top:80px}
+h1,h2,h3{text-wrap:balance}
 
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
@@ -102,7 +103,9 @@ section{scroll-margin-top:80px}
 .sec-head-light .sec-sub{color:var(--p-ink-2)}
 
 /* ============ FEJLÉC ============ */
-.site-head{position:sticky;top:0;z-index:1000;background:rgba(14,20,32,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.site-head{position:sticky;top:0;z-index:1000;background:rgba(14,20,32,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft);transition:background .3s ease,box-shadow .3s ease}
+.site-head::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(192,138,78,.55) 30%,rgba(192,138,78,.55) 70%,transparent)}
+.site-head.scrolled{background:rgba(10,14,23,.93);box-shadow:0 14px 34px -20px rgba(0,0,0,.65)}
 .head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
 .brand{display:flex;align-items:center;gap:12px;min-width:0}
 .brand-mark{color:var(--amber);flex:none;display:grid;place-items:center}
@@ -143,19 +146,29 @@ section{scroll-margin-top:80px}
 .hero-copy{max-width:600px}
 .hero-title{font-family:var(--display);font-size:clamp(38px,5.6vw,64px);line-height:1.06;letter-spacing:-.022em;font-weight:800;margin-bottom:24px}
 .hero-title .line{display:block}
-.line-accent{color:var(--amber-hi)}
+.line-accent{background:linear-gradient(92deg,#e2b57f 0%,#c08a4e 62%,#9a6c3c 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--ink-2);max-width:540px;margin-bottom:34px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
 .hero-note{font-size:13.5px;color:var(--ink-3)}
-.hero-visual{position:relative;justify-self:center}
-.hero-emblem{width:min(480px,100%);height:auto}
+.hero-copy > *,.hero-visual{animation:fadeUp .8s cubic-bezier(.22,.61,.36,1) both}
+.hero-copy > *:nth-child(1){animation-delay:.05s}
+.hero-copy > *:nth-child(2){animation-delay:.14s}
+.hero-copy > *:nth-child(3){animation-delay:.23s}
+.hero-copy > *:nth-child(4){animation-delay:.32s}
+.hero-copy > *:nth-child(5){animation-delay:.41s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero-visual{animation-delay:.3s;position:relative;justify-self:center}
+.hero-emblem{width:min(480px,100%);height:auto;filter:drop-shadow(0 26px 60px rgba(0,0,0,.45))}
 .ring-pulse{transform-origin:260px 262px;animation:pulse 5s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(.985);opacity:.45}50%{transform:scale(1.015);opacity:.75}}
+.ring-scan{transform-origin:260px 262px;animation:scan 36s linear infinite}
+@keyframes scan{to{transform:rotate(360deg)}}
 .pest{transform-origin:260px 286px;animation:pest 7s ease-in-out infinite}
 @keyframes pest{0%,88%,100%{transform:rotate(0deg)}92%{transform:rotate(-7deg)}96%{transform:rotate(6deg)}}
 
 /* ============ BIZALMI SÁV ============ */
-.trust{background:var(--paper);color:var(--p-ink);border-top:1px solid var(--paper-line);border-bottom:1px solid var(--paper-line)}
+.trust{position:relative;background:var(--paper);color:var(--p-ink);border-top:1px solid var(--paper-line);border-bottom:1px solid var(--paper-line)}
+.trust::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),rgba(192,138,78,.06) 55%,transparent)}
 .trust-in{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:52px 0}
 .trust-item{display:flex;gap:16px;align-items:flex-start}
 .trust-num{font-family:var(--display);font-size:13px;font-weight:800;color:var(--amber-deep);border:1px solid var(--paper-line);width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:10px;background:#fff}
@@ -166,28 +179,37 @@ section{scroll-margin-top:80px}
 .services{padding:104px 0 96px;background:linear-gradient(180deg,var(--bg) 0%,#101725 100%)}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .svc-card{position:relative;background:var(--panel);border:1px solid var(--line-soft);border-radius:18px;padding:30px 28px 28px;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.svc-card::before{content:"";position:absolute;top:0;left:26px;right:26px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--amber),rgba(192,138,78,0));opacity:0;transition:opacity .25s ease}
 .svc-card:hover{transform:translateY(-5px);border-color:#3a4a66;background:var(--panel-2)}
+.svc-card:hover::before{opacity:1}
 .svc-ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(192,138,78,.12);color:var(--amber-hi);border:1px solid rgba(192,138,78,.22);margin-bottom:20px}
 .svc-ico svg{width:27px;height:27px}
 .svc-card h3{font-family:var(--display);font-size:19.5px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em}
 .svc-card p{font-size:14.5px;color:var(--ink-2)}
 .svc-tag{position:absolute;top:22px;right:22px;font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-hi);border:1px solid rgba(192,138,78,.4);padding:5px 10px;border-radius:999px;background:rgba(192,138,78,.08)}
+.svc-card-featured{background:linear-gradient(180deg,#1a2334 0%,#131a29 100%);border-color:rgba(192,138,78,.38)}
+.svc-card-featured::before{opacity:1}
+.svc-idx{position:absolute;right:24px;bottom:18px;font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--ink-3);opacity:.55}
 .svc-note{margin-top:36px;font-size:13.5px;color:var(--ink-3);max-width:760px}
 
 /* ============ KINEK SEGÍTEK ============ */
 .who{background:var(--paper);color:var(--p-ink);padding:104px 0 100px;border-top:1px solid var(--paper-line);border-bottom:1px solid var(--paper-line)}
 .who .sec-kicker{color:var(--amber-deep)}
 .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.who-card{background:#fff;border:1px solid var(--paper-line);border-radius:18px;padding:28px;transition:transform .25s ease,box-shadow .25s ease}
+.who-card{position:relative;background:#fff;border:1px solid var(--paper-line);border-radius:18px;padding:28px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.who-card::before{content:"";position:absolute;top:0;left:26px;right:26px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--amber-deep),rgba(154,108,60,0));opacity:0;transition:opacity .25s ease}
+.who-card:hover{border-color:#cfc7b4}
+.who-card:hover::before{opacity:1}
 .who-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(19,26,41,.35)}
-.who-ico{width:48px;height:48px;border-radius:13px;background:var(--p-ink);color:var(--amber);display:grid;place-items:center;margin-bottom:18px}
+.who-ico{width:48px;height:48px;border-radius:13px;background:var(--p-ink);color:var(--amber);display:grid;place-items:center;margin-bottom:18px;border:1px solid rgba(192,138,78,.35)}
 .who-ico svg{width:25px;height:25px}
 .who-card h3{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:9px}
 .who-card p{font-size:14px;color:var(--p-ink-2)}
 
 /* ============ FOLYAMAT ============ */
 .process{padding:104px 0 92px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.steps::before{content:"";position:absolute;top:74px;left:4%;right:4%;border-top:2px dashed rgba(192,138,78,.22)}
 .step{position:relative;background:var(--panel);border:1px solid var(--line-soft);border-radius:18px;padding:32px 28px 28px;transition:transform .25s ease,border-color .25s ease}
 .step:hover{transform:translateY(-5px);border-color:#3a4a66}
 .step-num{font-family:var(--display);font-size:15px;font-weight:800;letter-spacing:.08em;color:var(--amber-hi);display:inline-block;margin-bottom:16px;border-bottom:2px solid rgba(192,138,78,.4);padding-bottom:8px}
@@ -200,6 +222,7 @@ section{scroll-margin-top:80px}
 /* ============ RÓLAM ============ */
 .about{background:var(--bg-2);padding:104px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);position:relative;overflow:hidden}
 .about::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(600px 480px at 85% 30%,#000 30%,transparent 75%);mask-image:radial-gradient(600px 480px at 85% 30%,#000 30%,transparent 75%)}
+.about::after{content:"CT";position:absolute;right:2%;bottom:-46px;font-family:var(--display);font-weight:800;font-size:240px;line-height:1;letter-spacing:-.04em;color:rgba(255,255,255,.028);pointer-events:none}
 .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start;position:relative;z-index:1}
 .about-copy{position:relative;z-index:1}
 .about-copy h2{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.12;letter-spacing:-.015em;margin:14px 0 22px}
@@ -210,7 +233,8 @@ section{scroll-margin-top:80px}
 .sign-txt strong{display:block;font-family:var(--display);font-size:16px;font-weight:700}
 .sign-txt em{font-style:normal;font-size:12.5px;color:var(--ink-3);letter-spacing:.05em;text-transform:uppercase}
 .about-side{position:relative;z-index:1}
-.about-plate{background:var(--panel);border:1px solid var(--line-soft);border-radius:20px;padding:8px 28px 28px;position:sticky;top:104px}
+.about-plate{overflow:hidden;background:var(--panel);border:1px solid var(--line-soft);border-radius:20px;padding:8px 28px 28px;position:sticky;top:104px}
+.about-plate::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),rgba(192,138,78,.05) 60%,transparent)}
 .plate-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft)}
 .plate-row span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);flex:none}
 .plate-row strong{font-family:var(--display);font-size:14.5px;font-weight:700;text-align:right}
@@ -222,8 +246,14 @@ section{scroll-margin-top:80px}
 .closing{position:relative;padding:120px 0 110px;background:
   radial-gradient(820px 460px at 50% 0%,rgba(192,138,78,.13),transparent 62%),
   linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);text-align:center;overflow:hidden}
+.closing-in{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:72px 40px;border:1px solid rgba(192,138,78,.22);border-radius:26px;background:
+  radial-gradient(600px 300px at 50% -20%,rgba(192,138,78,.1),transparent 60%),rgba(19,26,41,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.corner{position:absolute;width:26px;height:26px;border:2px solid var(--amber);opacity:.9}
+.corner-tl{top:-2px;left:-2px;border-right:0;border-bottom:0;border-radius:26px 0 0 0}
+.corner-tr{top:-2px;right:-2px;border-left:0;border-bottom:0;border-radius:0 26px 0 0}
+.corner-bl{bottom:-2px;left:-2px;border-right:0;border-top:0;border-radius:0 0 0 26px}
+.corner-br{bottom:-2px;right:-2px;border-left:0;border-top:0;border-radius:0 0 26px 0}
 .closing::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(700px 420px at 50% 30%,#000 25%,transparent 75%);mask-image:radial-gradient(700px 420px at 50% 30%,#000 25%,transparent 75%)}
-.closing-in{position:relative;z-index:1;max-width:760px;margin:0 auto}
 .closing-title{font-family:var(--display);font-size:clamp(32px,5vw,54px);font-weight:800;line-height:1.08;letter-spacing:-.02em;margin-bottom:20px}
 .closing-sub{color:var(--ink-2);font-size:18px;max-width:560px;margin:0 auto 36px}
 .closing-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:26px}
@@ -241,8 +271,13 @@ section{scroll-margin-top:80px}
 .foot-base p{font-size:12.5px;color:var(--ink-3)}
 
 /* ============ REVEAL ANIMÁCIÓ ============ */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s)}
 .reveal.in{opacity:1;transform:none}
+
+@media (max-width:640px){
+  .steps::before{display:none}
+  .closing-in{padding:56px 22px}
+}
 
 /* ============ RESZPONZÍV ============ */
 @media (max-width:1024px){
@@ -286,7 +321,7 @@ section{scroll-margin-top:80px}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .ring-pulse,.pest{animation:none}
+  .ring-pulse,.pest,.ring-scan,.hero-copy > *,.hero-visual{animation:none}
   .btn,.svc-card,.who-card,.step{transition:none}
 }
 </style>
@@ -360,6 +395,10 @@ section{scroll-margin-top:80px}
         <circle cx="260" cy="262" r="150" stroke="#2b3a52" stroke-width="1.5"/>
         <circle cx="260" cy="262" r="96" stroke="#33445f" stroke-width="1.5" stroke-dasharray="3 7"/>
         <circle class="ring-pulse" cx="260" cy="262" r="204" stroke="#c08a4e" stroke-width="1.5" opacity=".55"/>
+        <g class="ring-scan" opacity=".8">
+          <circle cx="260" cy="262" r="176" stroke="#2e3d57" stroke-width="1.5" stroke-dasharray="2 26"/>
+          <circle cx="260" cy="86" r="3.5" fill="#c08a4e"/>
+        </g>
         <line x1="260" y1="14" x2="260" y2="96" stroke="#3a4d6b" stroke-width="1.5"/>
         <line x1="260" y1="428" x2="260" y2="510" stroke="#3a4d6b" stroke-width="1.5"/>
         <line x1="12" y1="262" x2="94" y2="262" stroke="#3a4d6b" stroke-width="1.5"/>
@@ -389,15 +428,15 @@ section{scroll-margin-top:80px}
 <!-- ================= BIZALMI SÁV ================= -->
 <section class="trust" aria-label="Tények röviden">
   <div class="wrap trust-in">
-    <div class="trust-item reveal">
+    <div class="trust-item reveal" style="--d:.05s">
       <span class="trust-num">01</span>
       <div><strong>Egészségügyi gázmester</strong><p>Az egészségügyi kártevőirtás szakképzettséget és felelősségtudatot kívánó terület.</p></div>
     </div>
-    <div class="trust-item reveal">
+    <div class="trust-item reveal" style="--d:.15s">
       <span class="trust-num">02</span>
       <div><strong>Lakossági és üzleti megbízások</strong><p>Otthonoktól az üzemi környezetig — mindkét területen gyakorlatban tesztelt munkafolyamattal.</p></div>
     </div>
-    <div class="trust-item reveal">
+    <div class="trust-item reveal" style="--d:.25s">
       <span class="trust-num">03</span>
       <div><strong>Felsőzsolca · Miskolc térsége</strong><p>Kiszállás Miskolcon és Borsod-Abaúj-Zemplén vármegye településein.</p></div>
     </div>
@@ -414,10 +453,11 @@ section{scroll-margin-top:80px}
     </div>
 
     <div class="svc-grid">
-      <article class="svc-card reveal">
+      <article class="svc-card reveal" style="--d:.05s">
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6.4" r="1.8"/><path d="M12 8.3c3.1 0 5.2 2.6 5.2 6.1 0 3.5-2.2 5.8-5.2 5.8s-5.2-2.3-5.2-5.8c0-3.5 2.1-6.1 5.2-6.1Z"/><path d="M10.4 9.1 7.1 6.4M13.6 9.1l3.3-2.7"/><path d="M6.9 12.2 3.5 10.7M17.1 12.2l3.4-1.5M7 16l-3.3 1.8M17 16l3.3 1.8"/><path d="M12 10.5v9.7"/></svg></div>
         <h3>Csótányirtás</h3>
         <p>A csótány rejtve, éjjel mozog, és gyorsan elszaporodik. A kezelést a búvóhelyek felkutatásával kezdjük — konyhában, fürdőszobában, gépészetben és raktári környezetben egyaránt.</p>
+        <span class="svc-idx" aria-hidden="true">01</span>
       </article>
 
       <article class="svc-card svc-card-featured reveal">
@@ -425,30 +465,35 @@ section{scroll-margin-top:80px}
         <h3>Csótányirtás géltechnológiával</h3>
         <p>Célzott, modern eljárás: a gél közvetlenül a búvó- és járvonalakon helyezendő el, így a beavatkozás a mindennapok lehető legkisebb megzavarásával, hajtás nélkül történik. Kiemelten ajánlott konyhákba és érzékeny helységekbe.</p>
         <span class="svc-tag">Kiemelt módszer</span>
+        <span class="svc-idx" aria-hidden="true">02</span>
       </article>
 
       <article class="svc-card reveal">
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5.6" r="1.7"/><circle cx="12" cy="10.9" r="2.1"/><ellipse cx="12" cy="16.9" rx="2.9" ry="3.6"/><path d="M10.6 4.7 8.2 2.6M13.4 4.7l2.4-2.1"/><path d="M10.1 10.3 6.4 8.4M13.9 10.3l3.7-1.9M10.1 15.8 5.8 18.2M13.9 15.8l4.3 2.4"/></svg></div>
         <h3>Hangyairtás</h3>
         <p>A hangya a konyhapulttól a teraszig bárhol felbukkanhat, és fészke gyakran nehezen hozzáférhető. A kezelés a nyomvonalakat és a fészket célba veszi, nem csak a látható egyedeket.</p>
+        <span class="svc-idx" aria-hidden="true">03</span>
       </article>
 
       <article class="svc-card reveal">
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13" rx="5.4" ry="6.6"/><path d="M12 6.4v13.2M8.2 11h7.6M8.6 15.4h6.8"/><path d="M10.8 6.9 8 4.4M13.2 6.9l2.8-2.5"/><path d="M6.7 11.5 3.8 10M6.9 15l-3 1.2M17.3 11.5l2.9-1.5M17.1 15l3 1.2"/></svg></div>
         <h3>Ágyi poloska-irtás</h3>
         <p>Az ágyi poloska apró, rejtőzködő rovar, amely bőröndökön, útitáskártyákon, használt bútorokon is bejuthat a lakásba. A siker kulcsa a teljes körű, minden rejtőzési pontra kiterjedő kezelés és a gondos utómunka.</p>
+        <span class="svc-idx" aria-hidden="true">04</span>
       </article>
 
       <article class="svc-card reveal">
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c1.6-7.4 7.2-11.4 13.6-9.4"/><ellipse cx="16.4" cy="12.6" rx="2.7" ry="3.8" transform="rotate(28 16.4 12.6)"/><path d="M4.6 12.5h2.2M6.2 8.4l1.8 1.2M4.4 15.9l2.1.3"/></svg></div>
         <h3>Bolhairtás</h3>
         <p>A bolhák gyorsan szaporodnak, és a pihenőhelyeken, szőnyegekben, repedésekben rejtőznek. A kezelés a petéktől a kifejlett egyedekig terjedő teljes életciklust veszi figyelembe.</p>
+        <span class="svc-idx" aria-hidden="true">05</span>
       </article>
 
       <article class="svc-card reveal">
         <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3c.8-4.2-2.1-8.6-7.3-8.6-4.9 0-8.7 3.6-8.7 8.1 0 1.4.4 2.7 1.1 3.7h13.2"/><path d="M20.5 14.3l-1.8 1"/><circle cx="16.3" cy="7.9" r="1.9"/><circle cx="17.7" cy="12.3" r=".35" fill="currentColor" stroke="none"/><path d="M4.5 13.8c-1.8.5-2.5 2-1.6 3.6"/></svg></div>
         <h3>Egér- és rágcsálóirtás</h3>
         <p>Az egerek és patkányok rágásnyomoktól a járványügyi kockázatig sokféle kárt okoznak. A munka a mozgásvonalak feltérképezésével, célzott elhelyezéssel és a behatolási pontok számbavételével folyik.</p>
+        <span class="svc-idx" aria-hidden="true">06</span>
       </article>
     </div>
 
@@ -510,19 +555,19 @@ section{scroll-margin-top:80px}
     </div>
 
     <ol class="steps">
-      <li class="step reveal">
+      <li class="step reveal" style="--d:.05s">
         <span class="step-num">01</span>
         <h3>Telefonos egyeztetés</h3>
         <p>Elmondhatja, mit észlelt, hol és mióta. A telefon során tisztázódnak a legfontosabb kérdések, és egyeztetjük a helyszíni felmérést.</p>
         <span class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3.5h3l1.7 4.3-2 1.6a12.5 12.5 0 0 0 6.4 6.4l1.6-2 4.3 1.7v3c0 .8-.7 1.5-1.5 1.5C10.5 20 4 13.5 4 5c0-.8.7-1.5 1.5-1.5Z"/></svg></span>
       </li>
-      <li class="step reveal">
+      <li class="step reveal" style="--d:.15s">
         <span class="step-num">02</span>
         <h3>Felmérés a helyszínen</h3>
         <p>A problémát és a helyszínt együtt nézzük meg: honnan jön, hol rejtőzik, milyen körülmények tartják fenn. Ez ad alapot a tervhez.</p>
         <span class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></svg></span>
       </li>
-      <li class="step reveal">
+      <li class="step reveal" style="--d:.25s">
         <span class="step-num">03</span>
         <h3>Személyre szabott megoldás</h3>
         <p>A felmérés alapján kap kezelési tervet és árnyalt tájékoztatást a teendőkről — az elérendő célt és a körülményeket közösen rögzítjük.</p>
@@ -569,7 +614,12 @@ section{scroll-margin-top:80px}
 
 <!-- ================= ZÁRÓ CTA ================= -->
 <section class="closing" id="kapcsolat">
-  <div class="wrap closing-in">
+  <div class="wrap">
+  <div class="closing-in">
+    <span class="corner corner-tl" aria-hidden="true"></span>
+    <span class="corner corner-tr" aria-hidden="true"></span>
+    <span class="corner corner-bl" aria-hidden="true"></span>
+    <span class="corner corner-br" aria-hidden="true"></span>
     <p class="kicker reveal"><span class="kicker-dot"></span>Kapcsolat</p>
     <h2 class="closing-title reveal">Kártevőt észlelt?<br>Beszéljük meg a megoldást.</h2>
     <p class="closing-sub reveal">Egy telefon eldönti, mi a következő lépés. Mutassa be a problémát — a többit közösen, gyorsan egyeztetjük.</p>
@@ -578,6 +628,7 @@ section{scroll-margin-top:80px}
       <a class="btn btn-ghost btn-lg" href="mailto:cservenyakt@freemail.hu">cservenyakt@freemail.hu</a>
     </div>
     <p class="closing-area reveal">Felsőzsolca · Miskolc térsége · Borsod-Abaúj-Zemplén vármegye</p>
+  </div>
   </div>
 </section>
 
@@ -675,12 +726,27 @@ section{scroll-margin-top:80px}
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -4% 0px" }
     );
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
+
+  /* ---------- Fejléc görgetési állapota ---------- */
+  var head = document.querySelector(".site-head");
+  var ticking = false;
+  function updateHead() {
+    head.classList.toggle("scrolled", window.scrollY > 8);
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(updateHead);
+    }
+  }, { passive: true });
+  updateHead();
 
   /* ---------- Aktív nav-hivatkozás jelölése ---------- */
   var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
