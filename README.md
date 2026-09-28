@@ -18,7 +18,7 @@ Az oldalstatikus HTML/CSS/JS alapú, nincs buildfolyamat:
 ## Technológia
 
 - Egyoldalas, reszponzív HTML (`index.html`) — a teljes CSS és JS inline van benne, így egyetlen fájlból működik (build nélkül)
-- Egyedi SVG monogram-favicon (data-URI, beágyazva)
+- Egyedi SVG-jelvény: stilizált, áthúzott rovar (kártevőirtás-motívum) — faviconként (data-URI, beágyazva) és arculati jelként
 - Google Fonts: Archivo (display) + Inter (szöveg)
 - Alap SEO: magyar oldalnyelv, title, meta description, JSON-LD (ProfessionalService)
 
