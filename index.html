@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Cservenyák Tamás — Egészségügyi kártevőirtás | Miskolc és Borsod-Abaúj-Zemplén vármegye</title>
 <meta name="description" content="Egészségügyi gázmesterként vállalom csótány, hangya, ágyi poloska és bolha irtását, valamint egér- és rágcsálóirtást otthonoknak és vállalkozásoknak Miskolc térségében és Borsod-Abaúj-Zemplén vármegyében. Hívás: +36 20 370 6439.">
 <meta name="theme-color" content="#0e1420">
@@ -68,13 +68,13 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:88px}
-body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+body.menu-open{overflow:hidden}
 img,svg{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 ul,ol{list-style:none}
 ::selection{background:rgba(192,138,78,.38);color:#fff}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
-section{scroll-margin-top:80px}
 h1,h2,h3{text-wrap:balance}
 
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
@@ -128,10 +128,11 @@ h1,h2,h3{text-wrap:balance}
 /* mobilmenü */
 @media (max-width:860px){
   .nav-toggle{display:flex}
-  .site-nav{position:fixed;left:0;right:0;top:72px;flex-direction:column;align-items:stretch;gap:0;background:var(--panel);border-bottom:1px solid var(--line);transform:translateY(-12px);opacity:0;visibility:hidden;pointer-events:none;transition:transform .25s ease,opacity .25s ease,visibility .25s}
+  .site-nav{position:fixed;left:0;right:0;top:72px;max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto;overscroll-behavior:contain;padding-bottom:env(safe-area-inset-bottom);flex-direction:column;align-items:stretch;gap:0;background:var(--panel);border-bottom:1px solid var(--line);transform:translateY(-12px);opacity:0;visibility:hidden;pointer-events:none;transition:transform .25s ease,opacity .25s ease,visibility .25s}
   .site-nav.open{transform:none;opacity:1;visibility:visible;pointer-events:auto}
   .site-nav a:not(.btn){padding:15px 24px;border-top:1px solid var(--line-soft);font-size:16px}
   .site-nav a:not(.btn):first-child{border-top:0}
+  .site-nav > a:not(.btn).active::after{display:none}
   .nav-call{margin:14px 16px 18px;justify-content:center}
 }
 
@@ -144,7 +145,7 @@ h1,h2,h3{text-wrap:balance}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--bg) 96%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;position:relative;z-index:1}
 .hero-copy{max-width:600px}
-.hero-title{font-family:var(--display);font-size:clamp(38px,5.6vw,64px);line-height:1.06;letter-spacing:-.022em;font-weight:800;margin-bottom:24px}
+.hero-title{font-family:var(--display);font-size:clamp(34px,5.6vw,64px);line-height:1.06;letter-spacing:-.022em;font-weight:800;margin-bottom:24px}
 .hero-title .line{display:block}
 .line-accent{background:linear-gradient(92deg,#e2b57f 0%,#c08a4e 62%,#9a6c3c 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--ink-2);max-width:540px;margin-bottom:34px}
@@ -282,23 +283,23 @@ h1,h2,h3{text-wrap:balance}
 /* ============ RESZPONZÍV ============ */
 @media (max-width:1024px){
   .svc-grid,.who-grid,.steps{grid-template-columns:repeat(2,1fr)}
+  .steps::before{display:none}
   .hero-grid{gap:40px}
   .hero-emblem{width:min(420px,100%)}
   .about-grid{grid-template-columns:1fr;gap:48px}
   .about-plate{position:static;max-width:520px}
   .site-nav{gap:18px}
   .brand-txt strong{font-size:15px}
-}
-
-@media (max-width:860px){
+}@media (max-width:860px){
   html{scroll-padding-top:80px}
-  section{scroll-margin-top:72px}
+
   .hero{padding:64px 0 60px}
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .hero-copy{max-width:560px}
   .hero-visual{order:2}
   .hero-emblem{width:min(340px,86%)}
-  .trust-in{grid-template-columns:1fr;gap:24px;padding:44px 0}
+  .trust-in{grid-template-columns:1fr;gap:20px;padding:44px 0}
+  .trust-item p{max-width:52ch}
   .foot-grid{grid-template-columns:1fr;gap:36px}
 }
 
@@ -310,11 +311,21 @@ h1,h2,h3{text-wrap:balance}
   .hero-cta .btn{width:100%;justify-content:center}
   .closing-cta .btn{width:100%;justify-content:center}
   .closing{padding:88px 0 84px}
-  .svc-tag{position:static;display:inline-block;margin-top:16px}
+  .svc-tag{position:static;display:inline-block;margin-top:16px;font-size:11.5px}
   .brand-txt em{display:none}
   .step-ico{display:none}
   .plate-row{flex-direction:column;gap:2px;align-items:flex-start}
   .plate-row strong{text-align:left}
+  .about-plate{max-width:100%}
+  .kicker,.sec-kicker{letter-spacing:.17em}
+  .hero{padding-top:56px}
+  .hero-emblem{filter:none}
+  .svc-card{padding-bottom:48px}
+  .trust-in{padding:40px 0}
+  .foot-col a{padding:9px 0}
+  .foot-base{justify-content:center;text-align:center;padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+  .closing-title{font-size:clamp(30px,8.4vw,40px)}
+  .about-sign{flex-wrap:wrap}
 }
 
 /* ============ REDUCED MOTION ============ */
@@ -324,6 +335,19 @@ h1,h2,h3{text-wrap:balance}
   .ring-pulse,.pest,.ring-scan,.hero-copy > *,.hero-visual{animation:none}
   .btn,.svc-card,.who-card,.step{transition:none}
 }
+
+/* ============ ÉRINTŐKÉSZÜLÉKEK ============ */
+@media (hover:hover){
+  .btn:hover{transform:translateY(-2px)}
+  .svc-card:hover,.who-card:hover,.step:hover{transform:translateY(-5px)}
+}
+@media (hover:none){
+  .btn:hover,.svc-card:hover,.who-card:hover,.step:hover{transform:none}
+  .site-nav > a:not(.btn):hover::after{width:0}
+}
+.btn:active{transform:scale(.97)}
+.svc-card:active,.who-card:active,.step:active{transform:scale(.99)}
+.nav-toggle:active{background:rgba(255,255,255,.06)}
 </style>
 </head>
 <body>
@@ -684,12 +708,14 @@ h1,h2,h3{text-wrap:balance}
     nav.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Menü megnyitása");
+    document.body.classList.remove("menu-open");
   }
 
   toggle.addEventListener("click", function () {
     var open = nav.classList.toggle("open");
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
     toggle.setAttribute("aria-label", open ? "Menü bezárása" : "Menü megnyitása");
+    document.body.classList.toggle("menu-open", open);
   });
 
   // hivatkozásra záródjon a menü
@@ -705,7 +731,7 @@ h1,h2,h3{text-wrap:balance}
     }
   });
 
-  // átméretezésnél záródjon
+  // átméretezésnél és elforgatásnál záródjon
   var lastW = window.innerWidth;
   window.addEventListener("resize", function () {
     if (window.innerWidth !== lastW) {
@@ -713,6 +739,7 @@ h1,h2,h3{text-wrap:balance}
       if (window.innerWidth > 860) closeMenu();
     }
   });
+  window.addEventListener("orientationchange", closeMenu);
 
   /* ---------- Scroll-reveal ---------- */
   var reveals = document.querySelectorAll(".reveal");
