@@ -10,7 +10,7 @@ Prémium, magyar nyelvű bemutatóoldal-látványterv Cservenyák Tamás egészs
 
 ## Megtekintés
 
-Az oldalstatikus HTML/CSS/JS alapú, nincs buildfolyamat:
+Az oldal statikus HTML/CSS/JS alapú, nincs buildfolyamat:
 
 - Élő demó: https://daekon-ship.github.io/cservenyak-tamas-latvanyterv/
 - Helyben: nyissa meg az `index.html` fájlt böngészőben — minden erőforrás (CSS, JS, favicon) a fájlba van építve.
@@ -22,10 +22,23 @@ Az oldalstatikus HTML/CSS/JS alapú, nincs buildfolyamat:
 - Google Fonts: Archivo (display) + Inter (szöveg)
 - Alap SEO: magyar oldalnyelv, title, meta description, JSON-LD (ProfessionalService)
 
+## Vizuális rendszer — „világos + zöld”
+
+- **Alap:** halványzöldes törtfehér (`#f4f7f1`) és tiszta fehér felületek — világos, friss megjelenés
+- **Fő zöld:** mély erdőzöld (`#1e6f45`) — egészség, higiénia, természetesség
+- **CTA-zöld:** élénk mohazöld (`#35c47e`) sötét zöld felületeken, mély zöld (`#1e6f45`) világos felületeken
+- **Sötét kontraszt:** majdnem-fekete zöld (`#0d2b1d` / `#0a2015`) — záró CTA és lábléc
+- **Visszafogott kiegészítő:** terrakotta (`#bf6a4a`) csak a kártevő-motívumon, hogy a „cél” jól elkülönüljön a „védelem”-től
+- Motívumok: célkereszt + ház-kontúr + áthúzott rovar; lebegő jelvények, pulzáló gyűrűk
+
+## Oldalszekciók
+
+Fejléc · Hero (chipek + lebegő jelvények) · Mozgó szolgáltatás-marquee · Bizalmi sáv · Szolgáltatások (kiemelt géltechnológia kártya) · „Mit vállalunk el?” ellenőrzőlista · Kinek segítek? · Munkafolyamat · Rólam · GYIK (accordion) · Záró CTA · Lábléc · Mobilon sticky hívósáv
+
 ## Tartalmi szabályok, amelyeket a látványterv betart
 
 - Csak ellenőrzött tényadat szerepel: név, tevékenység (egészségügyi kártevőirtás, rovar- és rágcsálóirtás), felsorolt szolgáltatások, elérhetőségek, bázis és szolgáltatási terület.
-- Nincs kitalált ár, vélemény, referencia, engedélyszám, éves tapasztalat vagy „24/7” állítás.
+- Nincs kitalált ár, vélemény, referencia, engedélyszám, éves tapasztalat vagy „24/7” állítás. Az árra vonatkozó GYIK-válasz kifejezetten a felmérés utáni egyeztetést mondja.
 - A kezelés körülményeit és az óvintézkedéseket a szakemberrel egyeztetik — nincs általános „veszélytelen” állítás.
 - Az „országos kiszállás” és a „HACCP szolgáltatás” tudatosan nem szerepel az ügyfél megerősítéséig.
 - Nincs látszólagos ajánlatkérő űrlap: a kapcsolatfelvétel a telefon és az e-mail.
