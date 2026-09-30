@@ -171,8 +171,13 @@ h1,h2,h3{text-wrap:balance}
 @keyframes pulse{0%,100%{transform:scale(.985);opacity:.4}50%{transform:scale(1.015);opacity:.8}}
 .ring-scan{transform-origin:260px 262px;animation:scan 36s linear infinite}
 @keyframes scan{to{transform:rotate(360deg)}}
-.pest{transform-origin:260px 286px;animation:pest 7s ease-in-out infinite}
-@keyframes pest{0%,88%,100%{transform:rotate(0deg)}92%{transform:rotate(-7deg)}96%{transform:rotate(6deg)}}
+.pest{transform-origin:260px 278px;animation:pest 8s ease-in-out infinite}
+@keyframes pest{0%,88%,100%{transform:rotate(0deg)}92%{transform:rotate(-6deg)}96%{transform:rotate(5deg)}}
+.ring-scan-slow{transform-origin:260px 262px;animation:scan 58s linear infinite reverse}
+.node-dot{animation:nodefade 9s ease-in-out infinite}
+.node-dot.nd-2{animation-delay:4.5s}
+@keyframes nodefade{0%,100%{opacity:.15}50%{opacity:.85}}
+.house-group{filter:drop-shadow(0 1px 0 rgba(255,255,255,.6))}
 
 /* lebegő jelvények a vizuál körül */
 .float-chip{position:absolute;display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--ink);box-shadow:var(--shadow-md);white-space:nowrap;animation:floaty 6s ease-in-out infinite alternate}
@@ -322,11 +327,16 @@ details[open] .faq-plus{transform:rotate(45deg);background:var(--green);border-c
 .foot-brand .brand-txt em{color:#8fb49d}
 .foot-brand p{margin-top:16px;font-size:14px;color:#8fb49d;max-width:300px}
 .foot-col h3{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#7fa68c;margin-bottom:16px}
-.foot-col a{display:block;font-size:14.5px;color:#c4dfd0;padding:5px 0;transition:color .18s ease}
+.foot-col a{display:flex;align-items:center;min-height:44px;font-size:14.5px;color:#c4dfd0;padding:5px 0;transition:color .18s ease}
 .foot-col a:hover{color:var(--green-bright)}
 .foot-area{margin-top:12px;font-size:12.5px;color:#8fb49d;letter-spacing:.06em}
 .foot-base{border-top:1px solid rgba(255,255,255,.08);padding:22px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot-base p{font-size:12.5px;color:#7fa68c}
+
+/* ============ FEJLÉC: opak háttér görgetve (a sötét lábléc ne átlátszon át) ============ */
+@media (max-width:860px){
+  .site-head.scrolled{background:#fff}
+}
 
 /* ============ MOBIL HÍVÓSÁV ============ */
 .callbar{position:fixed;left:0;right:0;bottom:0;z-index:1500;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);box-shadow:0 -12px 30px -22px rgba(16,35,26,.4);transition:transform .3s ease}
@@ -385,18 +395,20 @@ details[open] .faq-plus{transform:rotate(45deg);background:var(--green);border-c
   .trust-in{padding:40px 0}
   .foot-col a{padding:9px 0}
   .foot-base{justify-content:center;text-align:center;padding-bottom:calc(22px + env(safe-area-inset-bottom))}
+  .site-foot{padding-top:40px;padding-bottom:calc(86px + env(safe-area-inset-bottom))}
+  .foot-brand{padding-top:6px}
   .closing-title{font-size:clamp(30px,8.4vw,40px)}
   .closing-in{padding:56px 22px}
   .about-sign{flex-wrap:wrap}
   .callbar{display:flex}
-  body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  body{padding-bottom:0}
 }
 
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .ring-pulse,.pest,.ring-scan,.hero-copy > *,.hero-visual,.float-chip{animation:none}
+  .ring-pulse,.pest,.ring-scan,.ring-scan-slow,.node-dot,.hero-copy > *,.hero-visual,.float-chip{animation:none}
   .marquee-track{animation:none}
   .btn,.svc-card,.who-card,.step,.check-item{transition:none}
 }
@@ -495,27 +507,43 @@ details[open] .faq-plus{transform:rotate(45deg);background:var(--green);border-c
         <circle cx="260" cy="262" r="204" stroke="#d3e2d4" stroke-width="1.5"/>
         <circle cx="260" cy="262" r="150" stroke="#cfe0d1" stroke-width="1.5"/>
         <circle cx="260" cy="262" r="96" stroke="#c6dcca" stroke-width="1.5" stroke-dasharray="3 7"/>
+        <circle cx="260" cy="262" r="116" stroke="#cfe0d1" stroke-width="1"/>
+        <circle cx="260" cy="262" r="70" stroke="#cfe0d1" stroke-width="1" stroke-dasharray="1 6"/>
         <circle class="ring-pulse" cx="260" cy="262" r="204" stroke="#27a163" stroke-width="1.5" opacity=".5"/>
         <g class="ring-scan" opacity=".85">
           <circle cx="260" cy="262" r="176" stroke="#cfe0d1" stroke-width="1.5" stroke-dasharray="2 26"/>
           <circle cx="260" cy="86" r="3.5" fill="#27a163"/>
         </g>
+        <g class="ring-scan-slow" opacity=".55">
+          <circle cx="260" cy="262" r="124" stroke="#c6dcca" stroke-width="1.2" stroke-dasharray="1 18"/>
+          <circle cx="260" cy="138" r="2.6" fill="#27a163"/>
+        </g>
+        <g class="node-dot" opacity=".8">
+          <circle cx="430" cy="150" r="2.4" fill="#27a163"/><path d="M418 150h-8M430 162v8" stroke="#b9cfbc" stroke-width="1.2"/>
+        </g>
+        <g class="node-dot nd-2" opacity=".6">
+          <circle cx="88" cy="368" r="2" fill="#27a163"/><path d="M100 368h8M88 356v-8" stroke="#b9cfbc" stroke-width="1.2"/>
+        </g>
         <line x1="260" y1="14" x2="260" y2="96" stroke="#b9cfbc" stroke-width="1.5"/>
         <line x1="260" y1="428" x2="260" y2="510" stroke="#b9cfbc" stroke-width="1.5"/>
         <line x1="12" y1="262" x2="94" y2="262" stroke="#b9cfbc" stroke-width="1.5"/>
         <line x1="426" y1="262" x2="508" y2="262" stroke="#b9cfbc" stroke-width="1.5"/>
-        <!-- ház-kontúr: az otthon, amit védünk -->
-        <path d="M178 262v-48l82-64 82 64v48" stroke="url(#gscan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M196 262v92h128v-92" stroke="#a9c4ad" stroke-width="2" stroke-linecap="round"/>
-        <path d="M243 354v-52h34v52" stroke="#a9c4ad" stroke-width="2" stroke-linecap="round"/>
-        <!-- kártevő a célkeresztben: a feladat látható -->
-        <g class="pest" stroke="#bf6a4a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="260" cy="286" rx="17" ry="24"/>
-          <path d="M260 262v48"/>
-          <path d="M253 268l-10-9M267 268l10-9"/>
-          <path d="M244 278l-14-6M276 278l14-6M245 296l-14 7M275 296l14 7"/>
+        <circle cx="260" cy="262" r="2" fill="#1e6f45" opacity=".7"/>
+        <!-- ház-kontúr: az otthon, amit védünk — visszafogott méretben, optikai középpontban -->
+        <g class="house-group">
+          <path d="M196 250v-34l64-50 64 50v34" stroke="url(#gscan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M210 250v72h100v-72" stroke="#a9c4ad" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M247 322v-40h26v40" stroke="#a9c4ad" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M226 226h14M280 226h14" stroke="#cfe0d1" stroke-width="1.2" stroke-linecap="round"/>
         </g>
-        <path d="M226 262 294 330M294 262l-68 68" stroke="#1e6f45" stroke-width="4.2" stroke-linecap="round"/>
+        <!-- kártevő a célkeresztben: precíz, kisebb motívum -->
+        <g class="pest" stroke="#bf6a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="260" cy="278" rx="12" ry="17"/>
+          <path d="M260 261v34"/>
+          <path d="M255 266l-7-6M265 266l7-6"/>
+          <path d="M249 274l-10-4M271 274l10-4M250 288l-10 5M270 288l10 5"/>
+        </g>
+        <path d="M233 251 287 305M287 251l-54 54" stroke="#1e6f45" stroke-width="3.4" stroke-linecap="round"/>
         <!-- méretvonalak: a felmérés pontossága -->
         <path d="M120 470h280" stroke="#cfe0d1" stroke-width="1.5"/>
         <path d="M120 464v12M400 464v12" stroke="#b9cfbc" stroke-width="1.5"/>
