@@ -6,10 +6,10 @@ Prémium, magyar nyelvű bemutatóoldal: rovar- és rágcsálóirtás otthonokna
 
 **Éles oldal:** https://rovarirtofiuk.hu
 
-## Kapcsolat
+## Kapcsolat (testvérpáros)
 
-- **Kapcsolattartó:** Cservenyák Ádám — e.ü. kártevőirtó szakember
-- **Telefon:** [+36 20 985 2717](tel:+36209852717)
+- **Cservenyák Tamás** — egészségügyi gázmester · kártevőirtó szakember — [+36 20 370 6439](tel:+36203706439)
+- **Cservenyák Ádám** — e.ü. kártevőirtó szakember — [+36 20 985 2717](tel:+36209852717)
 - **E-mail:** [cservenyakt@freemail.hu](mailto:cservenyakt@freemail.hu)
 - **Bázis:** Felsőzsolca · **Szolgáltatási terület:** Miskolc térsége, Borsod-Abaúj-Zemplén vármegye
 
@@ -43,7 +43,7 @@ Fejléc · Hero (chipek + lebegő jelvények) · Mozgó szolgáltatás-marquee �
 
 ## Tartalmi szabályok, amelyeket az oldal betart
 
-- Csak ellenőrzött tényadat szerepel: tevékenység (egészségügyi kártevőirtás), szolgáltatások, kapcsolattartó (Cservenyák Ádám), elérhetőségek, bázis és szolgáltatási terület.
+- Csak ellenőrzött tényadat szerepel: tevékenység (egészségügyi kártevőirtás), szolgáltatások, kapcsolattartók (Cservenyák Tamás és Cservenyák Ádám), elérhetőségek, bázis és szolgáltatási terület.
 - Nincs kitalált ár, vélemény, referencia, engedélyszám, éves tapasztalat vagy „24/7” állítás. Az árra vonatkozó GYIK-válasz kifejezetten a felmérés utáni egyeztetést mondja.
 - A kezelés körülményeit és az óvintézkedéseket a szakemberrel egyeztetik — nincs általános „veszélytelen” állítás.
 - Nincs látszólagos ajánlatkérő űrlap: a kapcsolatfelvétel a telefon és az e-mail.
