@@ -4,4 +4,10 @@ Thumbs.db
 .env.*
 *.log
 .daekon/
+.freebuff/
+_ftpref/
+*.key
+*.pem
+backup/
+backups/
 
